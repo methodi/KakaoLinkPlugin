@@ -7,6 +7,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.util.Log;
+
 import com.kakao.KakaoLink;
 import com.kakao.KakaoParameterException;
 import com.kakao.KakaoTalkLinkMessageBuilder;
@@ -30,13 +32,13 @@ public class KakaoLinkPlugin extends CordovaPlugin {
 	 */
 	private void link(JSONObject options){
 		LOG.d("KakaoLinkPlugin", "link");
-		String message;
-		String image;
-		String url;
-		String label;
-		int width;
-		int height;
-		try {
+		String message = "";
+		String image = "";
+		String url = "";
+		String label = "";
+		int width = 0;
+		int height = 0;
+		try {Log.d("KakaoLinkPlugin",options.toString());
 			kakaoLink = KakaoLink.getKakaoLink(cordova.getActivity().getApplicationContext());
 			final KakaoTalkLinkMessageBuilder kakaoTalkLinkMessageBuilder = kakaoLink.createKakaoTalkLinkMessageBuilder();
 
@@ -44,7 +46,7 @@ public class KakaoLinkPlugin extends CordovaPlugin {
 				message = options.getString("label");
 				kakaoTalkLinkMessageBuilder.addText(message);
 			}catch(JSONException e){
-				
+				Log.d("KakaoLinkPlugin",e.getMessage());
 			}
 			
 			try{
@@ -53,7 +55,7 @@ public class KakaoLinkPlugin extends CordovaPlugin {
 				height = options.getInt("height");
 				kakaoTalkLinkMessageBuilder.addImage(image, width, height);
 			}catch(JSONException e){
-				
+				Log.d("KakaoLinkPlugin",e.getMessage());
 			}
 			
 			try{
