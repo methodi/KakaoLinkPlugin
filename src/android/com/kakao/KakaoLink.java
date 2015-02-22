@@ -82,9 +82,9 @@ public class KakaoLink {
      * @param context 카카오톡을 실행시킬 context
      */
     public void sendMessage(final String linkMessage, final Context context) throws KakaoParameterException {
-        final Intent intent = TalkProtocol.createKakakoTalkLinkIntent(context, linkMessage);
+        Intent intent = TalkProtocol.createKakakoTalkLinkIntent(context, linkMessage);
+        
         if (intent == null) {
-            //alert install dialog
             new AlertDialog.Builder(context)
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .setMessage("There is no installed KakaoTalk version higher than 4.2.0")
@@ -99,6 +99,7 @@ public class KakaoLink {
                 .create().show();
 
         } else {
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
         }
     }
