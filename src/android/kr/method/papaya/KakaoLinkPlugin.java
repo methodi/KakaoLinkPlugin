@@ -74,7 +74,7 @@ public class KakaoLinkPlugin extends CordovaPlugin {
 				kakaoTalkLinkMessageBuilder.addWebButton(label);
 			}
 			
-			
+			kakaoLink.sendMessage(kakaoTalkLinkMessageBuilder.build(), cordova.getActivity().getApplicationContext());
 		} catch (KakaoParameterException e) {
 			e.printStackTrace();
 		}
