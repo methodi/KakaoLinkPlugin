@@ -1,0 +1,5 @@
+<resources>
+    <string name="kakao_app_key">[YOUR APP KEY]</string>
+    <string name="kakao_scheme">kakao[YOUR APP KEY]</string>
+    <string name="kakaolink_host">kakaolink</string>
+</resources>

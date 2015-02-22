@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="kr.method.papaya.KakaoLinkPlugin"
+        version="0.1.0">
+
+	<name>KakaoLinkPlugin</name>
+	<author>June PARK</author>
+	  
+	<description>
+		PhoneGap plugin to Papaya Chatd
+	</description>
+
+	<license>MIT</license>
+	<keywords>phonegap,android,immortal,service,zombie,papaya,chatd</keywords>
+
+	<engines>
+		<engine name="cordova" version=">=3.0.0"/>
+	</engines>
+
+	<js-module src="www/KakaoLinkPlugin.js" name="KakaoLinkPlugin">
+		<clobbers target="KakaoLinkPlugin" />
+	</js-module>
+
+	<!-- android -->
+	<platform name="android">
+		<config-file target="res/xml/config.xml" parent="/*">
+			<feature name="KakaoLinkPlugin" >
+				<param name="android-package" value="kr.method.papaya.KakaoLinkPlugin"/>
+			</feature>
+		</config-file>
+
+		<config-file target="AndroidManifest.xml" parent="/manifest/application/activity/intent-filter">
+			<data android:scheme="@string/kakao_scheme" android:host="@string/kakaolink_host" />
+		</config-file>
+
+		<config-file target="AndroidManifest.xml" parent="/manifest/application">
+			<meta-data android:name="com.kakao.sdk.AppKey" android:value="@string/kakao_app_key" />
+		</config-file>
+
+		<source-file src="src/android/res/values/kakao_strings.xml" target-dir="res/values/" />
+		
+		<source-file src="src/android/kr/method/papaya/KakaoLinkPlugin.java" target-dir="src/kr/method/papaya/" />
+		
+		<source-file src="src/android/com/kakao/exception/KakaoException.java" target-dir="src/com/kakao/exception/" />
+		
+		<source-file src="src/android/com/kakao/helper/CommonProtocol.java" target-dir="src/com/kakao/helper/" />
+		<source-file src="src/android/com/kakao/helper/KakaoServiceProtocol.java" target-dir="src/com/kakao/helper/" />
+		<source-file src="src/android/com/kakao/helper/Logger.java" target-dir="src/com/kakao/helper/" />
+		<source-file src="src/android/com/kakao/helper/MethodInvoker.java" target-dir="src/com/kakao/helper/" />
+		<source-file src="src/android/com/kakao/helper/StoryProtocol.java" target-dir="src/com/kakao/helper/" />
+		<source-file src="src/android/com/kakao/helper/SystemInfo.java" target-dir="src/com/kakao/helper/" />
+		<source-file src="src/android/com/kakao/helper/TalkProtocol.java" target-dir="src/com/kakao/helper/" />
+		<source-file src="src/android/com/kakao/helper/Utility.java" target-dir="src/com/kakao/helper/" />
+		
+		<source-file src="src/android/com/kakao/internal/Action.java" target-dir="src/com/kakao/internal/" />
+		<source-file src="src/android/com/kakao/internal/AppActionInfo.java" target-dir="src/com/kakao/internal/" />
+		<source-file src="src/android/com/kakao/internal/KakaoTalkLinkProtocol.java" target-dir="src/com/kakao/internal/" />
+		<source-file src="src/android/com/kakao/internal/LinkObject.java" target-dir="src/com/kakao/internal/" />
+		
+		<source-file src="src/android/com/kakao/AppActionBuilder.java" target-dir="src/com/kakao/" />
+		<source-file src="src/android/com/kakao/AppActionInfoBuilder.java" target-dir="src/com/kakao/" />
+		<source-file src="src/android/com/kakao/KakaoLink.java" target-dir="src/com/kakao/" />
+		<source-file src="src/android/com/kakao/KakaoParameterException.java" target-dir="src/com/kakao/" />
+		<source-file src="src/android/com/kakao/KakaoTalkLinkMessageBuilder.java" target-dir="src/com/kakao/" />
+	</platform>
+</plugin>
