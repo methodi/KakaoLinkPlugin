@@ -5,11 +5,7 @@ import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.LOG;
 import org.json.JSONArray;
 import org.json.JSONException;
-
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
+import org.json.JSONObject;
 
 public class KakaoLinkPlugin extends CordovaPlugin {
 	private final String LINK = "link";
