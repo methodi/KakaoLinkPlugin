@@ -10,8 +10,8 @@ KakaoLinkPlugin.prototype.link = function(options) {
 if(!window.plugins) {
     window.plugins = {};
 }
-if(!window.plugins.KakaoLinkPlugin) {
-    window.plugins.KakaoLinkPlugin = new KakaoLinkPlugin();
+if(!window.plugins.kakaoLinkPlugin) {
+    window.plugins.kakaoLinkPlugin = new KakaoLinkPlugin();
 }
 
 if(typeof module != 'undefined' && module.exports) {
