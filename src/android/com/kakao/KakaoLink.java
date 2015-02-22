@@ -33,7 +33,6 @@ import com.kakao.helper.SystemInfo;
 import com.kakao.helper.TalkProtocol;
 import com.kakao.helper.Utility;
 import com.kakao.internal.KakaoTalkLinkProtocol;
-import com.kakao.sdk.R;
 
 /**
  * 카카오링크 서비스를 사용하기 위한 class로 앱당 하나 존재한다.
@@ -58,7 +57,7 @@ public class KakaoLink {
         if (appKey == null)
              appKey = Utility.getMetadata(context, APP_KEY_PROPERTY);
         if (TextUtils.isEmpty(appKey))
-            throw new KakaoParameterException(context.getString(R.string.com_kakao_alert_appKey));
+            throw new KakaoParameterException("need to declare com.kakao.sdk.AppKey in your AndroidManifest.xml");
         else {
             appVer = String.valueOf(Utility.getAppVersion(context));
             appPackageName = Utility.getAppPackageName(context);
@@ -88,7 +87,7 @@ public class KakaoLink {
             //alert install dialog
             new AlertDialog.Builder(context)
                 .setIcon(android.R.drawable.ic_dialog_alert)
-                .setMessage(context.getString(R.string.com_kakao_alert_install_kakaotalk))
+                .setMessage("There is no installed KakaoTalk version higher than 4.2.0")
                 .setPositiveButton(android.R.string.ok, new OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
