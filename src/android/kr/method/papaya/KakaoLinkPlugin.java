@@ -7,9 +7,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.kakao.KakaoLink;
+import com.kakao.KakaoParameterException;
+import com.kakao.KakaoTalkLinkMessageBuilder;
+
 public class KakaoLinkPlugin extends CordovaPlugin {
 	private final String LINK = "link";
-	
+	KakaoLink kakaoLink;
 
 	public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
 		//서비스 시작
@@ -26,6 +30,53 @@ public class KakaoLinkPlugin extends CordovaPlugin {
 	 */
 	private void link(JSONObject options){
 		LOG.d("KakaoLinkPlugin", "link");
-		
+		String message;
+		String image;
+		String url;
+		String label;
+		int width;
+		int height;
+		try {
+			kakaoLink = KakaoLink.getKakaoLink(cordova.getActivity().getApplicationContext());
+			final KakaoTalkLinkMessageBuilder kakaoTalkLinkMessageBuilder = kakaoLink.createKakaoTalkLinkMessageBuilder();
+
+			try{
+				message = options.getString("message");
+				kakaoTalkLinkMessageBuilder.addText(message);
+			}catch(JSONException e){
+				
+			}
+			
+			try{
+				image = options.getString("image");
+				width = options.getInt("width");
+				height = options.getInt("height");
+				kakaoTalkLinkMessageBuilder.addImage(image, width, height);
+			}catch(JSONException e){
+				
+			}
+			
+			try{
+				url = options.getString("url");
+			}catch(JSONException e){
+				url = "";
+			}
+			
+			try{
+				label = options.getString("label");
+			}catch(JSONException e){
+				label = "";
+			}
+			
+			if(!url.equals("") && !label.equals("")){
+				kakaoTalkLinkMessageBuilder.addWebButton(label,url);
+			}else if(url.equals("") && !label.equals("")){
+				kakaoTalkLinkMessageBuilder.addWebButton(label);
+			}
+			
+			
+		} catch (KakaoParameterException e) {
+			e.printStackTrace();
+		}
 	}
 }
