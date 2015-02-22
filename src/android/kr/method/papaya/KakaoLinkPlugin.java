@@ -41,7 +41,7 @@ public class KakaoLinkPlugin extends CordovaPlugin {
 			final KakaoTalkLinkMessageBuilder kakaoTalkLinkMessageBuilder = kakaoLink.createKakaoTalkLinkMessageBuilder();
 
 			try{
-				message = options.getString("message");
+				message = options.getString("label");
 				kakaoTalkLinkMessageBuilder.addText(message);
 			}catch(JSONException e){
 				
@@ -57,15 +57,15 @@ public class KakaoLinkPlugin extends CordovaPlugin {
 			}
 			
 			try{
-				url = options.getString("url");
+				url = options.getString("webButtonUrl");
 			}catch(JSONException e){
 				url = "";
 			}
 			
 			try{
-				label = options.getString("label");
+				label = options.getString("webButtonText");
 			}catch(JSONException e){
-				label = "";
+				label = "앱으로 이동";
 			}
 			
 			if(!url.equals("") && !label.equals("")){
