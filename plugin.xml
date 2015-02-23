@@ -30,9 +30,9 @@
 			</feature>
 		</config-file>
 
-		<config-file target="AndroidManifest.xml" parent="/manifest/application/activity/intent-filter">
+		<!--config-file target="AndroidManifest.xml" parent="/manifest/application/activity/intent-filter">
 			<data android:scheme="@string/kakao_scheme" android:host="@string/kakaolink_host" />
-		</config-file>
+		</config-file-->
 
 		<config-file target="AndroidManifest.xml" parent="/manifest/application">
 			<meta-data android:name="com.kakao.sdk.AppKey" android:value="@string/kakao_app_key" />
