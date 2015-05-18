@@ -27,13 +27,14 @@ phonegap local plugin add https://github.com/methodi/KakaoLinkPlugin.git
 
 ##<a name="config_api_key"></a>Config API KEY
 
-반드시 아래 경로의 string 값을 수정해주세요.
+### Android
+You must modify this strings.
 
 /platform/android/res/values/kakao_strings.xml
 
-kakao_app_key : API 키값입니다.
+kakao_app_key : This is an API key value.
 
-kakao_scheme : "kakao"+API 키값입니다.
+kakao_scheme : This is string combines of "kakao" and API key value.
 
-kakaolink_host : "kakaolink"가 기본값으로 수정하실 필요없습니다.
+kakaolink_host : Default is "kakaolink". Do not change.
 
